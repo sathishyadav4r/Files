@@ -15,18 +15,17 @@ Step 3: Install java 11
 
 sudo yum install java-11-openjdk-devel -y
 
-Prep the Server With Required Softwares
-Step 1: Update the server.
+Setup Sonarqube Web Server
+Step 1: Download the latest sonarqube installation file to /opt folder. You can get the latest download link from here. http://www.sonarqube.org/downloads/
 
-sudo yum update -y
+cd /opt
 
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
 
-sudo yum install wget unzip -y
+2. Unzip sonarqube source files and rename the folder.
 
-Step 3: Install java 11
-
-sudo yum install java-11-openjdk-devel -y
-
+sudo unzip sonarqube-7.6.zip
+sudo mv sonarqube-7.6 sonarqube
 
 Add Sonar User and Privileges
 Create a user named sonar and make it the owner of the /opt/sonarqube directory.
@@ -34,7 +33,7 @@ Create a user named sonar and make it the owner of the /opt/sonarqube directory.
 sudo useradd sonar
 sudo chown -R sonar:sonar /opt/sonarqube
 
-
+add sonar user in "visudo"
 
 Start Sonarqube Service
 To start sonar service, you need to use the script in sonarqube bin directory.
@@ -46,6 +45,7 @@ sudo su - sonar
 Step 2: Navigate to the start script directory.
 
 cd /opt/sonarqube/bin/linux-x86-64 
+
 Step 3: Start the sonarqube service.
 
 ./sonar.sh start
