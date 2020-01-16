@@ -1,4 +1,74 @@
 test
 
+-----------------------------------
+
+Prep the Server With Required Softwares
+Step 1: Update the server.
+
+sudo yum update -y
+
+Step 2: Install wget & unzip
+
+sudo yum install wget unzip -y
+
+Step 3: Install java 11
+
+sudo yum install java-11-openjdk-devel -y
+
+Prep the Server With Required Softwares
+Step 1: Update the server.
+
+sudo yum update -y
+
+
+sudo yum install wget unzip -y
+
+Step 3: Install java 11
+
+sudo yum install java-11-openjdk-devel -y
+
+
+Add Sonar User and Privileges
+Create a user named sonar and make it the owner of the /opt/sonarqube directory.
+
+sudo useradd sonar
+sudo chown -R sonar:sonar /opt/sonarqube
+
+
+
+Start Sonarqube Service
+To start sonar service, you need to use the script in sonarqube bin directory.
+
+Step 1: Login as sonar user
+
+sudo su - sonar
+
+Step 2: Navigate to the start script directory.
+
+cd /opt/sonarqube/bin/linux-x86-64 
+Step 3: Start the sonarqube service.
+
+./sonar.sh start
+
+Now, you should be able to access sonarqube on the browser on port 9000
+
+Step 4: Check the application status. If it is in running state, you can access the sonarqube dashboard using the DNS name or Ip address of your server.
+
+sudo ./sonar.sh status
+
+
+Setting up Sonarqube as a service
+Step 1: Create a file /etc/systemd/system/sonarqube.service
+
+sudo vi /etc/systemd/system/sonarqube.service
+
+          ------send to the mail--------
+          
+Step 3: Start and enable sonarqube
+
+sudo systemctl start sonarqube
+sudo systemctl enable sonarqube
+sudo systemctl start sonarqube
+sudo systemctl status  sonarqube
 
 
